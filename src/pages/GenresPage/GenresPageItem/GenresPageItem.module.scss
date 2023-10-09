@@ -1,0 +1,108 @@
+@keyframes movingArrow {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.wrapper {
+    background-color: #111;
+    height: 1000px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper-content {
+    padding-top: 72px;
+    margin-left: 32px;
+    width: 1750px;
+    .wrapper-content-title {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        color: var(--white-color);
+        .wrapper-content-text {
+            width: fit-content;
+        }
+        p {
+            width: 100%;
+            color: var(--white-color);
+        }
+        h1 {
+            display: inline;
+        }
+    }
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+
+    .content-item {
+        width: 350px;
+        padding: 5px 10px;
+        .item-img {
+            filter: brightness(0.3);
+            width: 100%;
+            border-radius: 5px;
+        }
+    }
+}
+
+.item-wrapper {
+    position: relative;
+
+    &:hover {
+        .img-icon {
+            // display: block;
+            z-index: 1;
+            // transform: translateY(-50%);
+            // top: 50%;
+            transition: all ease 0.3s;
+            scale: 1.2;
+
+            .right-icon {
+                animation: movingArrow ease 1s infinite;
+            }
+        }
+        .item-img {
+            filter: blur(3px);
+            filter: brightness(0.1);
+            transition: all ease 0.3s;
+
+            // justify-content: center;
+        }
+    }
+    .icon-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-icon {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        font-size: 24px;
+        color: var(--white-color);
+        z-index: 1;
+        // bottom: 0;
+        // display: none;
+    }
+}
+
+.paging-content {
+    display: flex;
+    justify-content: center;
+}
+
+.rc-pagination-total-text {
+    display: flex;
+    flex-direction: column;
+}

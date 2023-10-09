@@ -1,0 +1,207 @@
+.wrapper {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0));
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    &:hover {
+        background-color: rgb(0, 0, 0);
+        transition: all ease 0.3s;
+    }
+}
+
+.inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.navbar-menu-list {
+    position: relative;
+    &:hover {
+        .nav-list-ul {
+            transition: all ease 0.5s;
+            display: block;
+        }
+    }
+}
+.nav-list-ul {
+    min-width: 500px;
+    &::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        height: 35px;
+        width: 100%;
+        background-color: transparent;
+    }
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    display: none;
+    left: 18px;
+    margin-top: 14px;
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    li {
+        margin-left: 8px;
+        padding: 4px;
+        min-width: 150px;
+        font-weight: 500;
+        color: var(--white-color);
+        list-style: none;
+        .nav-list-icon {
+            padding-right: 8px;
+        }
+    }
+}
+
+h1 {
+    color: var(--white-color);
+}
+
+.nav-list-li {
+    // display: flex;
+    // flex-wrap: wrap;
+}
+
+.user-bar {
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+.search-bar {
+    padding: 0 16px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-input {
+    position: relative;
+    margin-left: 20px;
+    border: 1.5px solid transparent;
+    input {
+        border-radius: 4px;
+        flex: 1;
+        font-size: 1.6rem;
+        height: 100%;
+        padding-right: 40px;
+        caret-color: var(--white-color);
+        backdrop-filter: blur(8px);
+        background-color: rgba(92, 92, 92);
+        padding: 6px 6px;
+        color: var(--white-color);
+    }
+
+    input:not(:placeholder-shown) ~ .search-btn {
+        color: rgb(255, 255, 255);
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        top: var(--search-top-spacer);
+        right: var(--search-button-width);
+        width: 1px;
+        height: calc(var(--search-height) - var(--search-top-spacer) * 2);
+        background-color: rgba(22, 24, 35, 0.06);
+    }
+
+    &:focus-within {
+        border-color: rgba(22, 24, 35, 0.2);
+    }
+
+    .search-input-item {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 10px;
+
+        background-color: rgba(92, 92, 92);
+        .clear,
+        .loading,
+        .search-btn {
+            background-color: transparent;
+            right: calc(var(--search-button-width) + 16px);
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+        }
+        .clear {
+            padding: 0 6px;
+        }
+        .loading {
+            animation: spinner 1s linear infinite;
+        }
+    }
+}
+
+.search-result {
+    position: absolute;
+    margin-left: 20px;
+    min-width: 191px;
+    .search-result-item {
+        backdrop-filter: blur(8px);
+        background-color: rgba(92, 92, 92, 0.8);
+        &:hover {
+            backdrop-filter: blur(8px);
+            background-color: rgb(156, 156, 156);
+        }
+        display: flex;
+        justify-self: center;
+        align-items: center;
+        p {
+            color: var(--white-color);
+            padding: 0 10px;
+        }
+    }
+    .search-result-img {
+        height: 80px;
+        width: 40px;
+        object-fit: cover;
+        margin-left: 10px;
+        padding: 10px 0;
+    }
+}
+
+@keyframes spinner {
+    from {
+        transform: translateY(-50%) rotate(0);
+    }
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+.header-wrapper {
+    position: relative;
+    content: '';
+}
+
+.user-bar {
+    cursor: pointer;
+}
+.user-btn {
+    background: transparent;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+}
+
+.user-info {
+    color: var(--white-color);
+    right: 10px;
+    position: absolute;
+}

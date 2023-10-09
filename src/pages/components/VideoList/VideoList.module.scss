@@ -1,0 +1,20 @@
+.hot-videos {
+    padding: 0 30px;
+}
+
+.videos-title {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.videos-title,
+.videos-icon {
+    cursor: pointer;
+    color: var(--white-color);
+}
+
+.hot-videos-title {
+    margin-left: 8px;
+    width: fit-content;
+    padding-bottom: 10px;
+}

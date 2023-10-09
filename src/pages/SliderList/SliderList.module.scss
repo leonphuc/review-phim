@@ -1,0 +1,130 @@
+@keyframes movingArrow {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.wrapper {
+    padding: 0 30px;
+}
+
+.img-wrapper {
+    position: relative;
+    &:hover {
+        .img-icon {
+            display: block;
+            z-index: 4;
+        }
+        .item-img {
+            filter: brightness(0.5);
+            transition: all ease 0.3s;
+        }
+
+        h3 {
+            display: block;
+            z-index: 4;
+        }
+    }
+    .item-img {
+        border-radius: 10px;
+    }
+
+    .img-icon {
+        position: absolute;
+        font-size: 32px;
+        color: var(--white-color);
+        display: none;
+    }
+    .img-banner {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 360px;
+        width: 480px;
+        &:hover {
+            .overlay-gradient {
+                display: block;
+                z-index: 3;
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .overlay-gradient {
+            border-radius: 10px;
+
+            content: '';
+            top: 0;
+            left: 0;
+            // position: absolute;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 100%);
+            position: absolute;
+            transition: all ease 0.7s;
+            display: none;
+        }
+    }
+    h3 {
+        position: absolute;
+        bottom: 20px;
+        color: var(--white-color);
+        display: none;
+    }
+}
+
+.hot-videos-title {
+    margin-top: 20px;
+}
+
+.hot-videos-title,
+.hot-videos-icon {
+    color: var(--white-color);
+}
+
+.more-wrapper {
+    position: relative;
+    &:hover {
+        .more-icon {
+            z-index: 1;
+        }
+        .play-icon {
+            animation: movingArrow 1s infinite;
+        }
+        .more-img {
+            filter: brightness(0.1) blur(10px);
+            transition: all ease 0.3s;
+        }
+    }
+
+    .more-banner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 360px;
+        width: 480px;
+    }
+
+    .more-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        font-size: 32px;
+        color: var(--white-color);
+        h3 {
+            padding-right: 10px;
+        }
+    }
+}
+.more-img {
+    filter: brightness(0.3) blur(5px);
+    border-radius: 10px;
+}

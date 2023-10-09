@@ -1,0 +1,30 @@
+.wrapper {
+    // background-color: #111;
+    // height: 100%;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper-content {
+    padding-top: 72px;
+    margin-left: 32px;
+    width: 1750px;
+    h1 {
+        color: var(--white-color);
+    }
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    .content-item {
+        width: 350px;
+        padding: 10px 10px;
+        img {
+            width: 100%;
+            border-radius: 5px;
+        }
+    }
+}

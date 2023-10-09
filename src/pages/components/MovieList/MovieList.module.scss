@@ -1,0 +1,114 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wrapper-content {
+    padding-top: 72px;
+    // margin-left: 32px;
+    width: 1750px;
+    .wrapper-content-title {
+        margin-left: 10px;
+        color: var(--white-color);
+        .wrapper-content-text {
+            width: fit-content;
+        }
+        p {
+            // width: fit-content;
+            color: var(--white-color);
+        }
+    }
+}
+
+.content-empty {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    p {
+        color: var(--white-color);
+        font-size: 3.2rem;
+        font-weight: 600;
+    }
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    // min-height: 100px;
+
+    .content-item {
+        width: 350px;
+        padding: 5px 10px;
+        img {
+            width: 100%;
+            border-radius: 5px;
+        }
+    }
+}
+
+.item-wrapper {
+    position: relative;
+    background: none;
+    &:hover {
+        scale: 1.1;
+        z-index: 3;
+        transition: all ease 0.3s;
+        .img-icon {
+            display: block;
+            z-index: 4;
+        }
+        .item-img {
+            // filter: brightness(0.5);
+            transition: all ease 0.3s;
+        }
+        .overlay-gradient {
+            display: block;
+            z-index: 3;
+        }
+        h4 {
+            display: block;
+            z-index: 4;
+        }
+    }
+    h4 {
+        position: absolute;
+        bottom: 20px;
+        color: var(--white-color);
+        display: none;
+    }
+    .overlay-gradient {
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 100%);
+        position: absolute;
+        transition: all ease 0.7s;
+        display: none;
+    }
+    .img-icon {
+        position: absolute;
+        font-size: 32px;
+        color: var(--white-color);
+        display: none;
+    }
+    .icon-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.wrapper-select-title {
+    display: flex;
+    position: relative;
+}
+
+.react-select-container {
+    position: absolute !important;
+    width: 300px;
+    right: 10px;
+    color: var(--black-color);
+}
