@@ -1,3 +1,27 @@
+@media only screen and (max-width: 740px) {
+    .content {
+        display: flex;
+        justify-content: center;
+    }
+    .wrapper-content {
+        padding-top: 0 !important;
+    }
+    .wrapper-content-title {
+        display: flex;
+        align-items: center;
+    }
+}
+@media only screen and (max-width: 1080px) {
+    .content {
+        display: flex;
+        justify-content: center;
+    }
+    .wrapper-content-title {
+        display: flex;
+        align-items: center;
+    }
+}
+
 @keyframes movingArrow {
     0% {
         transform: translateX(0);
@@ -12,7 +36,6 @@
 
 .wrapper {
     background-color: #111;
-    height: 1000px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -20,7 +43,8 @@
 
 .wrapper-content {
     padding-top: 72px;
-    margin-left: 32px;
+    margin: auto;
+    // margin-left: 32px;
     width: 1750px;
     .wrapper-content-title {
         display: flex;
@@ -43,7 +67,7 @@
 .content {
     display: flex;
     flex-wrap: wrap;
-
+    // justify-content: center;
     .content-item {
         width: 350px;
         padding: 5px 10px;

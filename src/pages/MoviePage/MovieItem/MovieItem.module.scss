@@ -1,9 +1,22 @@
+@media only screen and (max-width: 740px) {
+    .slider-banner {
+        margin-top: 0;
+    }
+    .banner-title {
+        font-size: 1.6rem !important;
+    }
+    .banner-vie-name {
+        font-size: 1.2rem !important;
+    }
+    .banner-des {
+        display: none;
+    }
+}
 .wrapper {
     display: block;
-    // height: var(--height-video);
 }
 .slider-banner {
-    margin-top: -72px;
+    // margin-top: -72px;
     width: 100%;
     ul {
         bottom: 50px;

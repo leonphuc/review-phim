@@ -13,25 +13,27 @@ import videoDataSource from '~/data/data';
 import useDebounce from '~/hooks/useDebounce';
 
 import AuthModal from '../AuthModal';
-import { UserContext } from '~/context/UserContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleLogoutRedux } from '~/redux/actions/userAction';
+
 library.add(fas);
 
 const cx = classNames.bind(styles);
 
 function Header() {
     const navigate = useNavigate();
-    // console.log(videoDataSource.length);
+
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
     const [limitSearchResult, setLimitSearchResult] = useState(5);
 
-    // const [tokenUser, setTokenUser] = useState(localStorage.getItem('token'));
+    const [isActiveNav, setIsActiveNav] = useState('');
+    const [check, setCheck] = useState(false);
 
-    // console.log('tokenUser check : ', tokenUser);
-
-    const { logout, user } = useContext(UserContext);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user.account);
 
     const [authModal, setAuthModal] = useState(false);
 
@@ -62,7 +64,7 @@ function Header() {
     };
 
     const handleChange = (e) => {
-        const searchValue = e.target.value;
+        const searchValue = e.target.value.toLowerCase();
         if (!searchValue.startsWith(' ')) {
             setSearchValue(searchValue);
         }
@@ -87,20 +89,41 @@ function Header() {
         setAuthModal(true);
     }
     const handleLogOut = () => {
-        logout();
-        // localStorage.removeItem('token');
-        // setTokenUser(null);
+        dispatch(handleLogoutRedux());
+    };
+
+    useEffect(() => {
+        if (user && user.auth === false && authModal !== true) {
+            // console.log('log out');
+            return;
+        }
+    }, [user]);
+
+    const handleNavbarClick = () => {
+        setCheck((prevCheck) => !prevCheck);
+        if (check === true) {
+            setIsActiveNav('active');
+        } else {
+            setIsActiveNav('');
+        }
     };
 
     return (
         <>
-            <header className={cx('wrapper')}>
+            <header className={cx('wrapper', isActiveNav)}>
                 <>{authModal && <AuthModal setAuthModal={setAuthModal} />}</>
 
-                <div className={cx('inner')}>
-                    <Link to={config.routes.home}>
-                        <h1>Logo</h1>
-                    </Link>
+                <div className={cx('inner', isActiveNav)}>
+                    <div className={cx('mobile-menu')}>
+                        <button className={cx('mobile-menu-btn')} onClick={handleNavbarClick}>
+                            <FontAwesomeIcon icon="fa-solid fa-bars" />
+                        </button>
+                    </div>
+                    <div className={cx('logo')}>
+                        <Link to={config.routes.home}>
+                            <h1>Logo</h1>
+                        </Link>
+                    </div>
                     <div className={cx('navbar-menu')}>
                         <Menu>
                             <MenuItem title="Trang Chủ" to={config.routes.home} />
@@ -145,46 +168,49 @@ function Header() {
                     </div>
                     <div className="search-bar">
                         <div className={cx('search-input')}>
-                            <input
-                                ref={inputRef}
-                                type="text"
-                                value={searchValue}
-                                spellCheck="false"
-                                onChange={handleChange}
-                                onFocus={() => setShowResult(true)}
-                                placeholder="Tìm Phim..."
-                            />
-                            <div className={cx('search-input-item')}>
-                                {!!searchValue && !loading && (
-                                    <button className={cx('clear')} onClick={handleClear}>
-                                        <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />
+                            <div className={cx('search-input-wrapper')}>
+                                <input
+                                    ref={inputRef}
+                                    type="text"
+                                    value={searchValue}
+                                    spellCheck="false"
+                                    onChange={handleChange}
+                                    onFocus={() => setShowResult(true)}
+                                    placeholder="Tìm Phim..."
+                                />
+                                <div className={cx('search-input-item')}>
+                                    {!!searchValue && !loading && (
+                                        <button className={cx('clear')} onClick={handleClear}>
+                                            <FontAwesomeIcon icon="fa-solid fa-circle-xmark" />
+                                        </button>
+                                    )}
+
+                                    {loading && (
+                                        <FontAwesomeIcon className={cx('loading')} icon="fa-solid fa-spinner" />
+                                    )}
+                                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
+                                        <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
                                     </button>
-                                )}
-
-                                {loading && <FontAwesomeIcon className={cx('loading')} icon="fa-solid fa-spinner" />}
-                                <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
-                                    <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
-                                </button>
+                                </div>
                             </div>
-                        </div>
-
-                        <div className={cx('search-result')}>
-                            {searchResult
-                                .slice(0, limitSearchResult ? limitSearchResult : searchResult.length)
-                                .map((res, index) => (
-                                    <div key={index}>
-                                        <Link to={config.routes.title + `${res.name}`} onClick={handleClickMovie}>
-                                            <div className={cx('search-result-item')}>
-                                                <img
-                                                    src={res.source}
-                                                    alt={res.title}
-                                                    className={cx('search-result-img')}
-                                                />
-                                                <p>{res.title}</p>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                ))}
+                            <div className={cx('search-result')}>
+                                {searchResult
+                                    .slice(0, limitSearchResult ? limitSearchResult : searchResult.length)
+                                    .map((res, index) => (
+                                        <div key={index}>
+                                            <Link to={config.routes.title + `${res.name}`} onClick={handleClickMovie}>
+                                                <div className={cx('search-result-item')}>
+                                                    <img
+                                                        src={res.source}
+                                                        alt={res.title}
+                                                        className={cx('search-result-img')}
+                                                    />
+                                                    <p>{res.title}</p>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    ))}
+                            </div>
                         </div>
                     </div>
                     <div className={cx('user-info')}>

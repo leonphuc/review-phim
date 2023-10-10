@@ -29,11 +29,7 @@ function MovieList(props) {
     const [selectedOption, setSelectedOption] = useState(optionsGenresType[0]);
     const [selectResult, setSelectResult] = useState([]);
 
-    // console.log('selectedOption', selectedOption);
-
     /////////////////////
-
-    // console.log('movieData', movieData);
 
     ///////////////////////////////LOGIC///////////////////////////////////////////
 
@@ -105,90 +101,98 @@ function MovieList(props) {
     //     return originalElement;
     // };
 
-    // console.log('selectResult', selectResult);
-
-    // const test = { ...selectResult };
-    // console.log('test', test);
     return (
         <>
             <div className={cx('wrapper')}>
-                <div className={cx('wrapper-content')}>
-                    <div className={cx('wrapper-content-title')}>
-                        <div className={cx('wrapper-content-text')}>
-                            <Link to={config.routes.home}>
-                                <p>
-                                    <FontAwesomeIcon icon="fa-solid fa-angle-left" /> Trang chủ
-                                </p>
-                            </Link>
-                        </div>
-                        <div className={cx('wrapper-select-title')}>
-                            <h1>{props.movieGenres.titleGenresType}</h1>
-                            <Select
-                                value={selectedOption}
-                                onChange={setSelectedOption}
-                                options={optionsGenresType}
-                                className={cx('react-select-container')}
-                                classNamePrefix={cx('react-select')}
-                                theme={(theme) => ({
-                                    ...theme,
-                                    borderRadius: 0,
-                                    colors: {
-                                        ...theme.colors,
-                                        neutral50: 'grey',
-                                        primary: 'black',
-                                    },
-                                })}
-                            />
-                        </div>
-                    </div>
-
-                    <div className={cx('content')}>
-                        {selectResult > -1 ? (
-                            <>
-                                <div className={cx('content-empty')}>
-                                    <p>Không Có Dữ Liệu X_X</p>
+                <div className={cx('wrapper-container')}>
+                    <div className={cx('wrapper-content')}>
+                        <div className={cx('wrapper-content-title')}>
+                            <div className={cx('wrapper-content-text')}>
+                                <Link to={config.routes.home}>
+                                    <p>
+                                        <FontAwesomeIcon icon="fa-solid fa-angle-left" /> Trang chủ
+                                    </p>
+                                </Link>
+                            </div>
+                            <div className={cx('wrapper-select-title')}>
+                                <div>
+                                    {' '}
+                                    <h1>{props.movieGenres.titleGenresType}</h1>
                                 </div>
-                            </>
-                        ) : (
-                            <>
-                                {selectResult.map((result, index) => (
-                                    <div className={cx('content-item')} key={index}>
-                                        <Link to={config.routes.title + `${result.name}`} onClick={scrollToTop}>
-                                            <div className={cx('item-wrapper')}>
-                                                <div className={cx('icon-wrapper')}>
-                                                    <div className={cx('overlay-gradient')}></div>
+                                <Select
+                                    value={selectedOption}
+                                    onChange={setSelectedOption}
+                                    options={optionsGenresType}
+                                    className={cx('react-select-container')}
+                                    classNamePrefix={cx('react-select')}
+                                    theme={(theme) => ({
+                                        ...theme,
+                                        borderRadius: 0,
+                                        colors: {
+                                            ...theme.colors,
+                                            neutral50: 'grey',
+                                            primary: 'black',
+                                        },
+                                    })}
+                                />
+                            </div>
+                        </div>
 
-                                                    <FontAwesomeIcon
-                                                        icon="fa-solid fa-play"
-                                                        className={cx('img-icon')}
-                                                    />
-                                                    <h4>{result.vie_title}</h4>
-                                                    <img
-                                                        src={result.source}
-                                                        alt={result.title}
-                                                        className={cx('item-img')}
-                                                    />
-                                                </div>
+                        <div className={cx('content')}>
+                            <div className={cx('content-items')}>
+                                <div className={cx('content-items-wrapper')}>
+                                    {selectResult > -1 ? (
+                                        <>
+                                            <div className={cx('content-empty')}>
+                                                <p>Không Có Dữ Liệu X_X</p>
                                             </div>
-                                        </Link>
-                                    </div>
-                                ))}
-                            </>
-                        )}
+                                        </>
+                                    ) : (
+                                        <>
+                                            {selectResult.map((result, index) => (
+                                                <div className={cx('content-item')} key={index}>
+                                                    <Link
+                                                        to={config.routes.title + `${result.name}`}
+                                                        onClick={scrollToTop}
+                                                    >
+                                                        <div className={cx('item-wrapper')}>
+                                                            <div className={cx('icon-wrapper')}>
+                                                                <div className={cx('overlay-gradient')}></div>
+
+                                                                <FontAwesomeIcon
+                                                                    icon="fa-solid fa-play"
+                                                                    className={cx('img-icon')}
+                                                                />
+                                                                <h4>{result.vie_title}</h4>
+                                                                <img
+                                                                    src={result.source}
+                                                                    alt={result.title}
+                                                                    className={cx('item-img')}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            ))}
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className={cx('paging-button')}>
-                    <Pagination
-                        className="pagination-data"
-                        locale={locale}
-                        onChange={PaginationChange}
-                        total={videoByOption[0].data.length}
-                        current={current}
-                        pageSize={size}
-                        showSizeChanger={false}
-                        // itemRender={PrevNextArrow}
-                        onShowSizeChange={PerPageChange}
-                    />
+                    <div className={cx('paging-button')}>
+                        <Pagination
+                            className="pagination-data"
+                            locale={locale}
+                            onChange={PaginationChange}
+                            total={videoByOption[0].data.length}
+                            current={current}
+                            pageSize={size}
+                            showSizeChanger={false}
+                            // itemRender={PrevNextArrow}
+                            onShowSizeChange={PerPageChange}
+                        />
+                    </div>
                 </div>
             </div>
         </>

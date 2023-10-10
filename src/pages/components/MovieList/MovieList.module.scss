@@ -1,14 +1,64 @@
+@media only screen and (max-width: 740px) {
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .content-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    .wrapper-content {
+        max-width: 1750px;
+    }
+    .wrapper-select-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .wrapper-content-title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-bottom: 30px;
+    }
+}
+@media only screen and (max-width: 1080px) {
+    .wrapper-content {
+        max-width: 1750px;
+    }
+    .content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        .content-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    .content-items-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+}
+
 .wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+.wrapper-container {
+    display: flex;
     flex-direction: column;
+    width: 1750px;
 }
 
 .wrapper-content {
-    padding-top: 72px;
-    // margin-left: 32px;
-    width: 1750px;
+    padding-top: 36px;
+
     .wrapper-content-title {
         margin-left: 10px;
         color: var(--white-color);
@@ -16,7 +66,6 @@
             width: fit-content;
         }
         p {
-            // width: fit-content;
             color: var(--white-color);
         }
     }
@@ -35,11 +84,17 @@
     }
 }
 
+.content-items-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
 .content {
     display: flex;
     flex-wrap: wrap;
-    // min-height: 100px;
-
+    .content-items {
+        display: flex;
+        flex-wrap: wrap;
+    }
     .content-item {
         width: 350px;
         padding: 5px 10px;
@@ -103,12 +158,17 @@
 
 .wrapper-select-title {
     display: flex;
-    position: relative;
+    // position: relative;
+    justify-content: space-between;
 }
 
 .react-select-container {
-    position: absolute !important;
+    // position: absolute !important;
     width: 300px;
     right: 10px;
     color: var(--black-color);
+}
+.paging-button {
+    display: flex;
+    justify-content: center;
 }

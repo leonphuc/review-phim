@@ -6,20 +6,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 
-import { loginApi } from '~/services/UserService';
-import { UserContext } from '~/context/UserContext';
+import { handleLoginRedux } from '~/redux/actions/userAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { isAxiosError } from 'axios';
 
 library.add(fas);
 const cx = classNames.bind(styles);
 
 function LoginModal({ setAuthModal, setLoginStatus, setSignUpStatus }) {
+    const dispatch = useDispatch();
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errText, setErrText] = useState('');
-    const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
+    // const [loading, setLoading] = useState(false);
 
-    const { loginContext } = useContext(UserContext);
+    const isLoading = useSelector((state) => state.user.isLoading);
+    const isError = useSelector((state) => state.user.isError);
+    const account = useSelector((state) => state.user.account);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
@@ -32,29 +36,17 @@ function LoginModal({ setAuthModal, setLoginStatus, setSignUpStatus }) {
     };
 
     const handleLogin = async (e) => {
+        // console.log('spam');
         e.preventDefault();
-        setLoading(true);
 
         if (!email || !password) {
             console.log('chưa nhập Email/Passord ');
-            setLoading(false);
             return;
         }
-        let res = await loginApi(email.trim(), password);
-        // console.log('res check: ', res);
-        if (res && res.token) {
-            loginContext(email, res.token);
-            setAuthModal(false);
-        } else {
-            if (res && res.status === 400) {
-                setErrText(res.data.error);
-            }
-        }
-        setLoading(false);
+        dispatch(handleLoginRedux(email, password));
     };
 
     const handlePressEnter = (e) => {
-        // e.preventDefault();
         if (e && e.key === 'Enter') {
             handleLogin(e);
         }
@@ -64,6 +56,12 @@ function LoginModal({ setAuthModal, setLoginStatus, setSignUpStatus }) {
         setLoginStatus(false);
         setSignUpStatus(true);
     }
+
+    useEffect(() => {
+        if (account && account.auth === true) {
+            setAuthModal(false);
+        }
+    }, [account]);
     return (
         <>
             <div className={cx('loginContainer')}>
@@ -97,7 +95,7 @@ function LoginModal({ setAuthModal, setLoginStatus, setSignUpStatus }) {
                                 </div>
                             </div>
                             <div className={cx('message-text')}>
-                                {errText ? (
+                                {isError ? (
                                     <p>
                                         <FontAwesomeIcon
                                             icon="fa-solid fa-circle-exclamation"
@@ -111,11 +109,12 @@ function LoginModal({ setAuthModal, setLoginStatus, setSignUpStatus }) {
                             </div>
                             <div className={cx('signup-contain')}>
                                 <button
-                                    className={cx('signup-btn', email && password ? 'active' : '')}
+                                    className={cx('signup-btn', email && password && !isLoading ? 'active' : '')}
                                     type="submit"
-                                    disabled={!email && !password ? true : false}
+                                    disabled={(!email && !password) || isLoading ? true : false}
                                 >
-                                    {loading && <FontAwesomeIcon icon="fa-solid fa-spinner" spinPulse />}&nbsp;Đăng Nhập
+                                    {isLoading && <FontAwesomeIcon icon="fa-solid fa-spinner" spinPulse />}&nbsp;Đăng
+                                    Nhập
                                 </button>
                             </div>
                         </div>
