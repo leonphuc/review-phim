@@ -29,14 +29,12 @@ const scrollToTop = () => {
 
 function SliderList(props) {
     const [limitSearchResult, setLimitSearchResult] = useState(5);
-
+    // console.log('props.videoGenres', props.videoGenres);
     const settings = {
         className: 'center',
         slidesToShow: 3,
         slidesToScroll: 1,
         infinite: true,
-        // autoplay: true,
-        // autoplaySpeed: 5000,
         speed: 1000,
         arrows: true,
         initialSlide: 1,
@@ -66,12 +64,10 @@ function SliderList(props) {
             {
                 breakpoint: 720,
                 settings: {
-                    // className: 'center',
                     centerMode: false,
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     initialSlide: 1,
-                    // centerPadding: '60px',
                 },
             },
         ],
@@ -128,6 +124,7 @@ function SliderList(props) {
                     </div>
                 </Slider>
             </div>
+            ;
         </>
     );
 }

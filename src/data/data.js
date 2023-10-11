@@ -43,6 +43,10 @@ const categories = [
         titleCategories: 'Phim Kinh Dị',
         valueCategories: 'phim-kinh-di',
     },
+    {
+        titleCategories: 'Phim Tình Cảm',
+        valueCategories: 'phim-tinh-cam',
+    },
     { valueCategories: 'phim-chuyen-sinh', titleCategories: 'Phim Chuyển Sinh' },
     { valueCategories: 'phim-hai-huoc', titleCategories: 'Phim Hài Hước' },
     { valueCategories: 'phim-doi-thuong', titleCategories: 'Phim Đời Thường' },

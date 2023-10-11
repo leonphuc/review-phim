@@ -14,9 +14,11 @@ library.add(fas);
 const cx = classNames.bind(styles);
 
 function VideoList(props) {
+    const [limitShowSlider, setLimitShowSlider] = useState(4);
+
     return (
         <>
-            {videoListAll.map((result, index) => (
+            {videoListAll.slice(0, limitShowSlider ? limitShowSlider : null).map((result, index) => (
                 <div className={cx('hot-videos')} key={index}>
                     <div className={cx('hot-videos-title')}>
                         <Link to={config.routes.content + `${result.valueCategories}`}>

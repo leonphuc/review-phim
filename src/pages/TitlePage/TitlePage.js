@@ -17,6 +17,8 @@ function TitlePage() {
     const [itemResult, setItemResult] = useState([]);
     const { path } = useParams();
 
+    console.log('path', path);
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -43,6 +45,9 @@ function TitlePage() {
     return (
         <>
             <div className={cx('wrapper')}>
+                <div className={cx('info-video')}>
+                    <span>Bạn đang xem phim {itemResult.vie_title}</span>
+                </div>
                 <div className={cx('banner')}>
                     <div className={cx('banner-img', classBtn)}>
                         <img alt={itemResult.title} src={itemResult.source} className={cx('banner-img-item')} />
@@ -59,6 +64,7 @@ function TitlePage() {
                     <div className={cx('banner-video', classBtn)}>{itemResult.video_url}</div>
                 </div>
             </div>
+
             <VideoList />
         </>
     );
