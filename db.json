@@ -1,0 +1,46 @@
+{
+    "data": {
+        "categories": [
+            {
+                "titleCategories": "Phim Hot",
+                "valueCategories": "phim-hot"
+            },
+            {
+                "titleCategories": "Phim Mới",
+                "valueCategories": "phim-moi"
+            },
+            {
+                "titleCategories": "Phim Hành Động",
+                "valueCategories": "phim-hanh-dong"
+            },
+            {
+                "titleCategories": "Phim Kinh Dị",
+                "valueCategories": "phim-kinh-di"
+            }
+        ],
+        "genresType": [
+            {
+                "titleGenresType": "Phim Điện Ảnh",
+                "valueGenresType": "movie"
+            },
+            {
+                "titleGenresType": "Phim Bộ",
+                "valueGenresType": "tvseries"
+            },
+            {
+                "titleGenresType": "Hoạt Hình",
+                "valueGenresType": "animate"
+            }
+        ],
+        "videoDataSource": [
+            {
+                "source": "image12",
+                "name": "mo-quy",
+                "title": "Mộ Quỷ",
+                "vie_title": "Mộ Quỷ",
+                "genres": ["movie"],
+                "categoryType": ["phim-moi", "phim-kinh-di"]
+            }
+        ]
+    }
+}

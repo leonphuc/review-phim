@@ -20,6 +20,11 @@ import image13 from '~/assets/New folder/phim-kinh-di/bien-than.jpg';
 import image14 from '~/assets/New folder/phim-kinh-di/the-boogeyman.jpg';
 import image15 from '~/assets/New folder/New folder/anime/watashi-no-shiawase-na-kekkon.jpg';
 import image16 from '~/assets/New folder/New folder/anime/jobless-reincarnation-recap-1.jpg';
+import image17 from '~/assets/New folder/New folder/anime/level-1-dakedo-unique-skill-de-saikyou-desu.jpg';
+import image18 from '~/assets/New folder/New folder/anime/kage-no-jitsuryokusha-ni-naritakute.jpg';
+import image19 from '~/assets/New folder/New folder/anime/himouto-umaru-chan.jpg';
+import image20 from '~/assets/New folder/phim-dien-anh/in-the-heart-of-the-sea.jpg';
+import image21 from '~/assets/New folder/phim-dien-anh/the-hulk-1.jpg';
 
 const categories = [
     {
@@ -38,6 +43,10 @@ const categories = [
         titleCategories: 'Phim Kinh Dị',
         valueCategories: 'phim-kinh-di',
     },
+    { valueCategories: 'phim-chuyen-sinh', titleCategories: 'Phim Chuyển Sinh' },
+    { valueCategories: 'phim-hai-huoc', titleCategories: 'Phim Hài Hước' },
+    { valueCategories: 'phim-doi-thuong', titleCategories: 'Phim Đời Thường' },
+
     // {
     //     titleCategories: 'Anime',
     //     valueCategories: 'anime',
@@ -66,10 +75,130 @@ const optionsGenresType = [
     { value: 'phim-moi', label: 'Phim Mới' },
     { value: 'phim-tinh-cam', label: 'Phim Tình Cảm' },
     { value: 'phim-hanh-dong', label: 'Phim Hành Động' },
+    { value: 'phim-chuyen-sinh', label: 'Phim Chuyển Sinh' },
+    { value: 'phim-hai-huoc', label: 'Phim Hài Hước' },
+    { value: 'phim-doi-thuong', label: 'Phim Đời Thường' },
 ];
 export { optionsGenresType };
 /////////////////////////////////////////////////////////
 const videoDataSource = [
+    {
+        source: image21,
+        img_banner: image21,
+        name: 'the-hulk-1',
+        title: 'Hulk 1',
+        vie_title: 'Người Khổng Lồ Xanh',
+        genres: ['movie'],
+        categoryType: ['phim-moi', 'phim-hanh-dong'],
+        isBanner: {
+            isMovie: false,
+        },
+        video_url: (
+            <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/CJALjN5ckZw?si=dqQUpUTmlp7k39wC"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        ),
+    },
+    {
+        source: image20,
+        img_banner: image20,
+        name: 'in-the-heart-of-the-sea',
+        title: 'In the Heart of the Sea',
+        vie_title: 'Biển Sâu Dậy Sóng',
+        genres: ['movie'],
+        categoryType: ['phim-moi', 'phim-hanh-dong'],
+        isBanner: {
+            isMovie: false,
+        },
+        video_url: (
+            <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/QEVJ_ZBzFm4?si=MuuR28wmBm7ciUb7"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        ),
+    },
+    {
+        source: image19,
+        img_banner: image19,
+        name: 'himouto-umaru-chan',
+        title: 'Himouto! Umaru-chan',
+        vie_title: 'Cô Em Gái 2 Mặt Của Tôi 2',
+        genres: ['anime'],
+        categoryType: ['phim-moi', 'phim-doi-thuong', 'phim-hai-huoc'],
+        isBanner: {
+            isAnime: false,
+        },
+        video_url: (
+            <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/Y1XD5RLSgmQ?si=QuyiijRIkb7_F_-p"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        ),
+    },
+    {
+        source: image18,
+        img_banner: image18,
+        name: 'kage-no-jitsuryokusha-ni-naritakute',
+        title: 'Kage no Jitsuryokusha ni Naritakute!',
+        vie_title: 'Chúa Tể Bóng Tối',
+        genres: ['anime'],
+        categoryType: ['phim-moi', 'phim-hanh-dong', 'phim-chuyen-sinh'],
+        isBanner: {
+            isAnime: false,
+        },
+        video_url: (
+            <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/YjgHO-Dkepw?si=4WfPyXUljrhb_mnP"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        ),
+    },
+    {
+        source: image17,
+        img_banner: image17,
+        name: 'level-1-dakedo-unique-skill-de-saikyou-desu',
+        title: 'Level 1 dakedo Unique Skill de Saikyou desu',
+        vie_title: 'Mặc Dù Chỉ Cấp 1 Nhưng Tôi Là Người Mạnh Nhất',
+        genres: ['anime'],
+        categoryType: ['phim-moi', 'phim-hanh-dong', 'phim-chuyen-sinh'],
+        isBanner: {
+            isAnime: false,
+        },
+        video_url: (
+            <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/KrZAZqZL5JY?si=70Vc62rI8RP8LAaW"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+            ></iframe>
+        ),
+    },
+
+    ///////////////////////////
     {
         source: image16,
         img_banner: image16,
@@ -77,7 +206,7 @@ const videoDataSource = [
         title: 'Jobless Reincarnation Recap 1',
         vie_title: 'Thất Nghiệp Chuyển Sinh',
         genres: ['anime'],
-        categoryType: ['phim-moi', 'phim-hanh-dong'],
+        categoryType: ['phim-moi', 'phim-hanh-dong', 'phim-chuyen-sinh'],
         isBanner: {
             isAnime: true,
         },

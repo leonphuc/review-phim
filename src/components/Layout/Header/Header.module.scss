@@ -17,6 +17,7 @@
     .wrapper {
         position: relative !important;
         background-color: var(--black-color);
+
         &.active {
             height: auto !important;
             overflow: hidden;
@@ -40,11 +41,12 @@
                 flex: 4;
                 order: 4;
             }
-            .search-bar {
-                flex: 5;
-                order: 5;
-            }
+            // .search-bar {
+            //     flex: 5;
+            //     order: 5;
+            // }
         }
+
         .search-input {
             margin: 0;
         }
@@ -57,6 +59,7 @@
             &.active {
                 margin-top: 16px;
                 display: block;
+
                 .user-bar {
                     display: block;
                     padding: 10px 8px;
@@ -70,19 +73,48 @@
                     margin-top: 0;
                 }
                 .search-input {
-                    padding: 8px 0;
-                    input {
-                        width: 100%;
-                    }
-                    .search-result {
-                        position: initial;
-                    }
+                    display: none;
+                }
+                .search-bar {
+                    display: none;
+                }
+                .user-btn {
+                    padding: 0;
                 }
             }
         }
     }
 }
 @media only screen and (max-width: 1080px) {
+}
+
+.to-top-btn {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    border-radius: 50%;
+
+    button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        background: transparent;
+        color: var(--primary-color);
+        p {
+            display: none;
+        }
+        &:hover {
+            cursor: pointer;
+            color: var(--white-color);
+            // p {
+            //     display: block;
+            //     font-size: 1.6rem;
+            //     color: var(--white-color);
+            // }
+        }
+    }
 }
 
 .wrapper {
@@ -99,6 +131,10 @@
     &:hover {
         background-color: rgb(0, 0, 0);
         transition: all ease 0.3s;
+    }
+    &.wrapper-sticky {
+        background-color: rgb(0, 0, 0);
+        transition: all ease 0.5s;
     }
 }
 
@@ -287,6 +323,7 @@ h1 {
     cursor: pointer;
 }
 .user-btn {
+    padding: 8px 16px;
     background: transparent;
     font-size: 1.8rem;
     font-weight: 700;

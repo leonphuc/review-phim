@@ -46,35 +46,41 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 360px;
-        width: 480px;
+        border-radius: 10px;
+        padding: 2% 2%;
+        img {
+            // padding: 10px 10px;
+            object-fit: contain;
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+        }
+        h3 {
+            text-align: center;
+        }
+
         &:hover {
             .overlay-gradient {
                 display: block;
                 z-index: 3;
-                height: 100%;
-                width: 100%;
             }
         }
-
         .overlay-gradient {
-            border-radius: 10px;
-
             content: '';
-            top: 0;
-            left: 0;
-            // position: absolute;
-            height: 100%;
-            width: 100%;
+            border-radius: 10px;
+            // height: 100%;
+            // width: 100%;
             background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0) 100%);
             position: absolute;
             transition: all ease 0.7s;
             display: none;
+            padding: 36% 48%;
         }
     }
+
     h3 {
         position: absolute;
-        bottom: 20px;
+        bottom: 8%;
         color: var(--white-color);
         display: none;
     }
@@ -105,11 +111,19 @@
     }
 
     .more-banner {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 360px;
-        width: 480px;
+        // height: 360px;
+        // width: 480px;
+        img {
+            padding: 10px 10px;
+            object-fit: contain;
+            height: 100%;
+            width: 100%;
+            margin: 0 auto;
+        }
     }
 
     .more-icon {

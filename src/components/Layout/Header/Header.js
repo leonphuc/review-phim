@@ -6,7 +6,7 @@ import Menu, { MenuItem } from './Menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { useState, useEffect, useRef, useContext } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 
 import videoListAll from '~/data/dataMerge';
 import videoDataSource from '~/data/data';
@@ -21,7 +21,10 @@ library.add(fas);
 const cx = classNames.bind(styles);
 
 function Header() {
-    const navigate = useNavigate();
+    const ref = useRef();
+    const [scroll, setScroll] = useState(false);
+
+    let [sticky, setSticky] = useState('');
 
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
@@ -108,9 +111,39 @@ function Header() {
         }
     };
 
+    ///////////////wrapper-sticky////////////////
+    const handleScroll = () => {
+        setScroll(window.scrollY > 150);
+        if (scroll) {
+            setSticky('wrapper-sticky');
+        } else {
+            setSticky('');
+        }
+    };
+
+    useLayoutEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    });
+    /////////////////////////////////////////////////////////////
+
+    const handleScrollToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    };
     return (
         <>
-            <header className={cx('wrapper', isActiveNav)}>
+            <header className={cx('wrapper', isActiveNav, sticky)}>
+                {scroll && (
+                    <div className={cx('to-top-btn')}>
+                        <button onClick={handleScrollToTop}>
+                            <FontAwesomeIcon icon="fa-solid fa-circle-chevron-up" />
+                            {/* <p> &nbsp;Đầu trang</p> */}
+                        </button>
+                    </div>
+                )}
                 <>{authModal && <AuthModal setAuthModal={setAuthModal} />}</>
 
                 <div className={cx('inner', isActiveNav)}>
