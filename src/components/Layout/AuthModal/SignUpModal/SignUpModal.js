@@ -8,7 +8,7 @@ import { useState } from 'react';
 library.add(fas);
 const cx = classNames.bind(styles);
 
-function SignUpModal({ setMultiAuthStatusModal, setLoginStatus, setSignUpStatus }) {
+function SignUpModal({ setMultiAuthStatusModal, setLoginStatus, setSignUpStatus, setQrSignUpStatus }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -16,6 +16,7 @@ function SignUpModal({ setMultiAuthStatusModal, setLoginStatus, setSignUpStatus 
         e.preventDefault();
     }
     function handleLogIn() {
+        setQrSignUpStatus(false);
         setSignUpStatus(false);
         setLoginStatus(true);
     }
@@ -26,7 +27,7 @@ function SignUpModal({ setMultiAuthStatusModal, setLoginStatus, setSignUpStatus 
                     <form onSubmit={hanldeSignUp}>
                         <h2 className={cx('login-title')}>Đăng Ký</h2>
                         <div className={cx('signup-wrapper')}>
-                            <div className={cx('signup-contain')}>
+                            {/* <div className={cx('signup-contain')}>
                                 <div className={cx('signup-form')}>
                                     <input
                                         type="text"
@@ -54,6 +55,11 @@ function SignUpModal({ setMultiAuthStatusModal, setLoginStatus, setSignUpStatus 
                                 <button className={cx('signup-btn')} type="submit">
                                     Đăng Ký
                                 </button>
+                            </div> */}
+                            <div className={cx('signup-contain')}>
+                                <div className={cx('attention')}>
+                                    <strong>Chức năng Đăng ký đang cập nhập, hiện tại chưa thể sử dụng</strong>
+                                </div>
                             </div>
                         </div>
                     </form>

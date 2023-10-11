@@ -9,7 +9,7 @@ import { useState } from 'react';
 library.add(fas);
 const cx = classNames.bind(styles);
 
-function MultiAuthModal({ setMultiAuthStatusModal, setLoginStatus, setSignUpStatus }) {
+function MultiAuthModal({ setMultiAuthStatusModal, setLoginStatus, setSignUpStatus, setQrSignUpStatus }) {
     function handleLogIn() {
         setMultiAuthStatusModal(false);
         setLoginStatus(true);
@@ -20,12 +20,18 @@ function MultiAuthModal({ setMultiAuthStatusModal, setLoginStatus, setSignUpStat
         setLoginStatus(false);
         setSignUpStatus(true);
     }
+    function handleLogInQr() {
+        setMultiAuthStatusModal(false);
+        setLoginStatus(false);
+        setSignUpStatus(false);
+        setQrSignUpStatus(true);
+    }
     return (
         <>
             <div className={cx('loginContainer')}>
                 <h2 className={cx('login-title')}>Đăng Nhập</h2>
                 <div className={cx('login-btns')}>
-                    <a className={cx('login-btn')}>
+                    <a className={cx('login-btn')} onClick={handleLogInQr}>
                         {/* <QRIcon /> */}
                         <p>Sử dụng QR code</p>
                     </a>

@@ -8,6 +8,8 @@ import { useState } from 'react';
 import LoginModal from './LoginModal';
 import MultiAuthModal from './MultiAuthModal';
 import SignUpModal from './SignUpModal';
+import QrModal from './QrModal';
+
 library.add(fas);
 const cx = classNames.bind(styles);
 
@@ -15,6 +17,7 @@ function AuthModal({ setAuthModal }) {
     const [multiAuthStatusModal, setMultiAuthStatusModal] = useState(true);
     const [loginStatusModal, setLoginStatus] = useState(false);
     const [signUpStatusModal, setSignUpStatus] = useState(false);
+    const [qrStatusModal, setQrSignUpStatus] = useState(false);
 
     // const [loginStatus, setLoginStatus] = useState();
 
@@ -32,6 +35,7 @@ function AuthModal({ setAuthModal }) {
                                         setMultiAuthStatusModal(true);
                                         setLoginStatus(false);
                                         setSignUpStatus(false);
+                                        setQrSignUpStatus(false);
                                     }}
                                 >
                                     <FontAwesomeIcon icon="fa-solid fa-angle-left" />
@@ -40,14 +44,23 @@ function AuthModal({ setAuthModal }) {
                             <button className={cx('close-model-btn')} onClick={() => setAuthModal(false)}>
                                 <FontAwesomeIcon icon="fa-solid fa-xmark" />
                             </button>
-                            {/* </div> */}
-
+                            <>
+                                {qrStatusModal ? (
+                                    <QrModal
+                                        setLoginStatus={setLoginStatus}
+                                        setMultiAuthStatusModal={setMultiAuthStatusModal}
+                                        setSignUpStatus={setSignUpStatus}
+                                        setQrSignUpStatus={setQrSignUpStatus}
+                                    />
+                                ) : null}
+                            </>
                             <>
                                 {multiAuthStatusModal ? (
                                     <MultiAuthModal
                                         setLoginStatus={setLoginStatus}
                                         setMultiAuthStatusModal={setMultiAuthStatusModal}
                                         setSignUpStatus={setSignUpStatus}
+                                        setQrSignUpStatus={setQrSignUpStatus}
                                     />
                                 ) : null}
                             </>
@@ -57,6 +70,7 @@ function AuthModal({ setAuthModal }) {
                                         setLoginStatus={setLoginStatus}
                                         setMultiAuthStatusModal={setMultiAuthStatusModal}
                                         setSignUpStatus={setSignUpStatus}
+                                        setQrSignUpStatus={setQrSignUpStatus}
                                         setAuthModal={setAuthModal}
                                     />
                                 ) : null}
@@ -67,6 +81,7 @@ function AuthModal({ setAuthModal }) {
                                         setLoginStatus={setLoginStatus}
                                         setMultiAuthStatusModal={setMultiAuthStatusModal}
                                         setSignUpStatus={setSignUpStatus}
+                                        setQrSignUpStatus={setQrSignUpStatus}
                                         setAuthModal={setAuthModal}
                                     />
                                 ) : null}
