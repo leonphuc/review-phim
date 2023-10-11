@@ -41,7 +41,7 @@ function SliderList(props) {
         arrows: true,
         initialSlide: 1,
         centerMode: true,
-        centerPadding: '60px',
+        centerPadding: '50px',
         // nextArrow: <SampleNextArrow />,
         // prevArrow: <SamplePrevArrow />,
         responsive: [
@@ -58,7 +58,6 @@ function SliderList(props) {
                 breakpoint: 1090,
                 settings: {
                     centerMode: true,
-
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     initialSlide: 1,
@@ -67,10 +66,12 @@ function SliderList(props) {
             {
                 breakpoint: 720,
                 settings: {
+                    // className: 'center',
                     centerMode: false,
-
                     slidesToShow: 1,
                     slidesToScroll: 1,
+                    initialSlide: 1,
+                    // centerPadding: '60px',
                 },
             },
         ],
@@ -84,12 +85,10 @@ function SliderList(props) {
                         .slice(0, limitSearchResult ? limitSearchResult : null)
                         .map((res, index, exact) => (
                             <div key={index}>
-                                {/* {limitSearchResult <= props.videoGenres.data.length ? ( */}
                                 <Link to={config.routes.title + `${res.name}`} exact={`${exact}`} onClick={scrollToTop}>
                                     <div className={cx('img-wrapper')}>
                                         <div className={cx('img-banner')}>
                                             <div className={cx('overlay-gradient')}></div>
-
                                             <img
                                                 src={res.source}
                                                 title={res.title}
@@ -101,31 +100,6 @@ function SliderList(props) {
                                         </div>
                                     </div>
                                 </Link>
-                                {/* ) : (
-                                    <div key={index}>
-                                        <Link
-                                            to={config.routes.title + `${res.name}`}
-                                            exact={`${exact}`}
-                                            onClick={scrollToTop}
-                                        >
-                                            <div className={cx('img-wrapper')}>
-                                                <div className={cx('img-banner')}>
-                                                    <div className={cx('overlay-gradient')}></div>
-                                                    <img
-                                                        src={res.source}
-                                                        title={res.title}
-                                                        alt={res.title}
-                                                        className={cx('item-img')}
-                                                    />
-                                                    <FontAwesomeIcon
-                                                        icon="fa-solid fa-play"
-                                                        className={cx('img-icon')}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    </div>
-                                )} */}
                             </div>
                         ))}
 
@@ -137,14 +111,13 @@ function SliderList(props) {
                         >
                             <div className={cx('more-wrapper')}>
                                 <div className={cx('more-banner')}>
-                                    <div>
-                                        <img
-                                            src={props.videoGenres.data[0].source}
-                                            title={props.videoGenres.data[0].title}
-                                            alt={props.videoGenres.data[0].title}
-                                            className={cx('more-img')}
-                                        />
-                                    </div>
+                                    <img
+                                        src={props.videoGenres.data[0].source}
+                                        title={props.videoGenres.data[0].title}
+                                        alt={props.videoGenres.data[0].title}
+                                        className={cx('more-img')}
+                                    />
+
                                     <div className={cx('more-icon')}>
                                         <h3>Xem tất cả </h3>{' '}
                                         <FontAwesomeIcon icon="fa-solid fa-play" className={cx('play-icon')} />

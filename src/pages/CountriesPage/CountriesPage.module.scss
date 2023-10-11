@@ -1,3 +1,45 @@
+@media only screen and (max-width: 740px) {
+    .wrapper {
+        margin-top: 0 !important;
+    }
+}
+
 .wrapper {
     margin-top: 72px;
+    .wrapper-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        h1 {
+        }
+    }
+}
+
+.img-wrapper {
+    position: relative;
+    &:hover {
+        .img-icon {
+            display: block;
+            z-index: 4;
+        }
+        .item-img {
+            filter: brightness(0.5);
+            transition: all ease 0.3s;
+        }
+
+        h3 {
+            display: block;
+            z-index: 4;
+        }
+    }
+}
+.img-banner {
+    height: 100px;
+    padding: 10px;
+    img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+    }
 }
